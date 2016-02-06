@@ -1,14 +1,17 @@
-import React from 'react';
-import {Paper} from 'material-ui';
-import html from '../md/features.md';
+import React from 'react'
+import Layout from '../components/Layout'
+import html from '../md/features.md'
 
 class Home extends React.Component {
 
-  render() {
+  render () {
     return (
-      <div className='home-layout'>
+      <Layout home>
         <section className='name'>
-          <label>AmelisaJS</label>
+          <div className='logo'>
+            <img src='/img/logo_amelisa.png' />
+          </div>
+          <label>Amelisa</label>
           <div className='moto'>Data engine with offline and realtime</div>
           <div>React/Mongo/NodeJS integration</div>
         </section>
@@ -17,12 +20,12 @@ class Home extends React.Component {
         </section>
         <section className='warning'>
           <div>
-            Warning. Alpha version. Not ready for production.
+            Alpha version. Not ready for production
           </div>
         </section>
-      </div>
-    );
+      </Layout>
+    )
   }
 }
 
-export default Home;
+export default Home

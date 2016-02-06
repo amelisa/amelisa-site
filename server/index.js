@@ -1,18 +1,17 @@
-import http from 'http';
-import getApp from './getApp';
+import '../config'
+import http from 'http'
+import app from './app'
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT
 
-let server = http.createServer();
+let server = http.createServer()
 
-let app = getApp();
-
-server.on('request', app);
+server.on('request', app)
 
 server.listen(port, (err) => {
   if (err) {
-    console.error('Can\'t start server, Error:', err);
+    console.error('Can\'t start server, Error:', err)
   } else {
-    console.info(`${process.pid} listening. Go to: http://localhost:${port}`);
+    console.info(`${process.pid} listening. Go to: http://localhost:${port}`)
   }
-});
+})

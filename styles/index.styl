@@ -1,12 +1,44 @@
 // @import 'nib/reset'
 // global-reset()
-$color = #03a9f4
 
 body
   padding 0
   margin 0
   font-family Roboto, sans-serif
+  color: $colors.text
+  font-size 16px
+  line-height normal
 
-// @import url('https://fonts.googleapis.com/css?family=Roboto:400,300,500');
-@import 'icons.css'
+p, ul
+  font-size 16px
+
+blockquote
+  font-size 16px
+  font-style normal
+  padding 10px 40px
+  margin 40px 0px
+  border-left: 3px solid $colors.border
+
+code:not(.hljs)
+  font-weight bold
+
+blockquote:before, blockquote:after
+  display none
+
+code.hljs
+  padding 10px 20px
+  margin 40px 0px
+
+a
+  color: $colors.links
+
+.mdl-layout__drawer-button
+  i
+    margin-top 10px
+
+.mdl-layout__header
+  background-color: $colors.main
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,300,500');
+@import '../node_modules/highlight.js/styles/github-gist.css'
 @import '../app/**/*.styl'
