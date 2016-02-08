@@ -6,4 +6,6 @@ It means that you can manipulate data while offline, even close the browser and 
 
 To use Amelisa, one needs to configure [Store](/docs/store).
 
-There is helpers for [React](/docs/react).
+There are helpers for [React](/docs/react).
+
+The best way to start playing with Amelisa is [Example of CRUD app](https://github.com/amelisa/amelisa-crud-example).
