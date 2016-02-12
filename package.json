@@ -15,6 +15,9 @@
   },
   "author": "",
   "license": "MIT",
+  "engines": {
+    "node": "5.4.x"
+  },
   "dependencies": {
     "classnames": "^2.2.3",
     "express": "^4.12.4",
