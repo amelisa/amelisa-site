@@ -3,13 +3,12 @@ FROM node:5.4
 ADD . /app
 
 RUN \
-  npm install -g forever && \
   cd /app && \
   npm install && \
   npm run build
 
 WORKDIR /app
 
-CMD forever server.js
+CMD node server.js
 
 EXPOSE 3000
