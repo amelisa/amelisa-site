@@ -2,10 +2,9 @@ FROM node:5.4
 
 ADD . /app
 
-RUN \
-  cd /app && \
-  npm install && \
-  npm run build
+RUN cd /app
+RUN npm install -quiet
+RUN npm run build
 
 WORKDIR /app
 
