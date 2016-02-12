@@ -5,7 +5,7 @@ ADD . /app
 WORKDIR /app
 
 RUN cd /app
-RUN npm install -quiet
+RUN npm install --quiet
 RUN npm run build
 
 CMD node server.js
