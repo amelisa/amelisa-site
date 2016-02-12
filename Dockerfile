@@ -1,12 +1,12 @@
 FROM node:5.4
 
-ADD . /app
+ADD . /src
 
-RUN cd /app
+RUN cd /src
 RUN npm install -quiet
 RUN npm run build
 
-WORKDIR /app
+WORKDIR /src
 
 CMD node server.js
 
