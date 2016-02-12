@@ -5,7 +5,7 @@ ADD . /app
 RUN \
   npm install -g forever && \
   cd /app && \
-  npm install && \
+  npm install --quiet && \
   npm run build
 
 WORKDIR /app
