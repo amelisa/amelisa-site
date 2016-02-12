@@ -16,7 +16,7 @@
   "author": "",
   "license": "MIT",
   "engines": {
-    "node": "5.4.x",
+    "node": "5.4.x"
   },
   "dependencies": {
     "classnames": "^2.2.3",
