@@ -22,8 +22,12 @@ const sections = {
     title: 'Subscribe',
     html: require('../md/docs/subscribe.md')
   },
+  getters: {
+    title: 'Getters',
+    html: require('../md/docs/getters.md')
+  },
   setters: {
-    title: 'Getters/Setters',
+    title: 'Setters',
     html: require('../md/docs/setters.md')
   },
   doc: {
@@ -33,6 +37,18 @@ const sections = {
   query: {
     title: 'Query',
     html: require('../md/docs/query.md')
+  },
+  date: {
+    title: 'Date',
+    html: require('../md/docs/date.md')
+  },
+  storeoptions: {
+    title: 'Store options',
+    html: require('../md/docs/storeoptions.md')
+  },
+  hooks: {
+    title: 'Hooks',
+    html: require('../md/docs/hooks.md')
   },
   react: {
     title: 'React',

@@ -1,24 +1,33 @@
 # Subscribe
 
-Model is empty when created and should be filled with data to work with. There are two ways to do it: `subscribe` - fills model with copy of data and sync changes from server with local copy. `fetch` - just fills model with copy of data.
+When created model is empty. There are two ways to fill it with data:
 
-> `subscription = await model.subscribe(items...)`  
-> `subscription = await model.fetch(items...)`   
-> `await model.unsubscribe(subscription)`  
-> `await model.unfetch(subscription)`  
-> * `items` Accepts one or more subscribable items, including a document or query
-> * `subscription` emits 'change' event when any of the items is changed
+> `await model.subscribe(items...)`
+> * `items` Accepts one or more subscribable items
+> * Fills model with data and sync it to database
 
-For example, if you want to change field on document, you should fetch whole document to model and then make a mutation.
+> `await model.fetch(items...)`
+> * `items` Accepts one or more subscribable items
+> * Fills model with data
+
+Subscribable item can be any of these types: `doc`, `query`, `path`, `collectionName`, `[collectionName, docId]` array, `[collectionName, expression]` array
 
 ```js
 let model = store.createModel()
 
 let $user = model.doc('user', '1')
+let $items = model.query('items', {})
 
-await model.fetch($user)
+await model.subscribe($user, 'users.2', ['users', '3'], $items, 'todos', ['products', {}])
 
-$user.set('age', 18)
-// or
-model.set('users.1.age', 18)
+// Model is filled with three user documents and items, todos, products queries
+
+let user1 = model.get('users.1')
+let user2 = model.get('users.2')
+let user3 = model.get('users.3')
+let items = model.query('items', {}).get()
+let todos = model.query('todos', {}).get()
+let products = model.query('products', {}).get()
 ```
+
+Get data with [Getters](/docs/getters).

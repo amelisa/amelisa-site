@@ -8,50 +8,34 @@ Amelisa supports only Mongo database right now. There are two storages:
 
 If you want to scale beyond one process, you need pub/sub system for inter-process message exchange. `RedisChannel` is an  implementation of pub/sub over Redis. As Redis can not work both as pub and sub simultaneously, you need two channels, one for publishing message, another for receiving them.
 
-You can specify some access control options: which collections should be sent to client and projections.
 
 ```js
 import { MongoStorage, RedisChannel, Store } from 'amelisa'
 
-const options = {
-  version: 1,
-  collections: {
-    auths: {
-      client: false
-    },
-    users: {
-      client: true
-    },
-    todos: {
-      client: true
-    }
-  },
-  projections: {
-    users: {
-      collectionName: 'auths',
-      fields: {
-        _id: true,
-        email: true,
-        name: true
-      }
-    }
-  },
-  clientStorage: true
-}
-const mongoUrl = process.env.MONGO_URL
-const redisUrl = process.env.REDIS_URL
+const storage = new MongoStorage(process.env.MONGO_URL)
+const pub = new RedisChannel(process.env.REDIS_URL)
+const sub = new RedisChannel(process.env.REDIS_URL, true)
+const options = {}
 
-let storage = new MongoStorage(mongoUrl)
-let pub = new RedisChannel(redisUrl)
-let sub = new RedisChannel(redisUrl, true)
-
-await Promise.all([
-  storage.init(),
-  pub.init(),
-  sub.init()
-])
+await storage.init()
+await pub.init()
+await sub.init()
 
 let store = new Store(storage, pub, sub, options)
+```
+
+Find more about [store options](/docs/storeoptions)
+
+For tests in-memory storage can be used.
+
+```js
+import { MemoryStorage, Store } from 'amelisa'
+
+const storage = new MemoryStorage()
+
+await storage.init()
+
+let store = new Store(storage)
 ```
 
 Store creates [Model](/docs/model).

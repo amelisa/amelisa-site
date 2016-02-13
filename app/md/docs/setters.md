@@ -1,44 +1,27 @@
-# Getters/Setters
+# Setters
 
-To be able to use any of getter or setters, model should be prefilled with data with subscribe/fetch.
-Get can return all collections, collection, document or document field.
+Models allow getting and setting to nested undefined paths. Setting such a path first sets each undefined or null parent to an empty object or empty array. Whether or not a path segment is a number determines whether the implied parent is created as an object or array.
 
-> `value = model.get(collectionName, docId, field, ...)`
-> * `value` Returns data from the path
-> * `collectionName` *(optional)* Name of collection
-> * `docId` *(optional)* Document id
-> * `field` *(optional)* Document field
+```js
+model.set('users.1.address.town', 'London')
+// Logs: { users: { 1: { address: { town: 'London' }}}}
+console.log(model.get())
+```
 
-> `value = model.get(path)`
-> * `value` Returns data from the path
-> * `path` Path to get value
+All model mutators modify data and emit events synchronously. This is only safe to do, because all remote data is synchronized with CRDT, and every client will eventually see a consistent view of the same data. With a more naive approach to syncing data to the server and other clients, updates to the data would need to wait until they were confirmed successful from the server.
 
-Set can be applied at least to document field.
-
-> `await model.set([collectionName, docId, field, ...], value)`
-> * `collectionName` Name of collection
-> * `docId` Document id
-> * `field` Document field
-> * `value` Value to set on the path
+As well as a synchronous interface, model mutators return promise, which is resolved when the operation is confirmed from the server, which may be desired to confirm that data was saved before updating the UI in some rare cases. This promise should be used very rarely in practice, and data updates should be treated as synchronous, so that the UI responds
+immediately even if a user has a high latency connection or is currently offline.
 
 > `await model.set(path, value)`
-> * `path` Path to set value
-> * `value` Value to set on the path
-
-If doc does not contain `_id` field, it will be generated with `model.id()`
+> * `path` Model path to set or `[collectionName, docId, field]` array
+> * `value` Value to assign
 
 > `await model.add(collectionName, doc)`
 > * `collectionName` Name of collection
-> * `doc` Document
-
-Del can be applied at least to document.
-
-> `await model.del([collectionName, docId, field, ...])`
-> * `collectionName` Name of collection
-> * `docId` Document id
-> * `field` *(optional)* Document field
+> * `doc` A document to add. If the document has an `_id` property, it will be set at that value underneath the path. Otherwise, an `_id` from model.id() will be set on the object first
 
 > `await model.del(path)`
-> * `path` Path to delete
+> * `path` Path to delete or `[collectionName, docId, field]` array
 
 Use Getters/Setters to manipulate [Doc](/docs/doc).
