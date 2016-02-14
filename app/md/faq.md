@@ -35,3 +35,7 @@ Most likely, yes.
 ### Is it possible to integrate it with another database (RethinkDB, Postgres, etc)?
 
 Yes. But to execute queries offline something like [Mingo](https://github.com/kofrasa/mingo) is needed.
+
+### What is the best way to follow the news?
+
+Follow the [Twitter](https://twitter.com/amelisajs)

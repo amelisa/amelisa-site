@@ -1,5 +1,10 @@
 # Resources
 
+### Social
+
+[Gihub](https://github.com/amelisa/amelisa)
+[Twitter](https://twitter.com/amelisajs) 
+
 ### Modules
 
 [amelisa-auth](https://github.com/amelisa/amelisa-auth) Auth
