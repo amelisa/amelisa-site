@@ -7,8 +7,8 @@ To subscribe for data, component should:
 - be wrapped with `amelisa.createContainer` method.
 
 > Container = amelisa.createContainer(Component)
-> * `Container` Return HOC, that subscribes for data and renders Component as data is available
 > * `Component` Component that implements `getQueries` method
+> * `Container` Returns HOC, that subscribes for data and renders Component as data is available
 
 Model is available in component's context.
 
@@ -56,13 +56,13 @@ export default amelisa.createContainer(Component)
 Server rendering in situation when every component subscribes to data independently could be not trivial, because in the components tree to be able to know what data is needed for lower components, Amelisa should render upper components first. Right now server rendering works in simple scenarios (it does not work if container components are passed as children).
 
 > html = await amelisa.renderToString(element, props, children)
-> * `html` Return html string
 > * `element` React element to render
 > * `props` Props
 > * `children` Children
+> * `html` Return html string
 
 > html = await amelisa.renderToStaticMarkup(element, props, children)
-> * `html` Return html string
 > * `element` React element to render
 > * `props` Props
 > * `children` Children
+> * `html` Return html string

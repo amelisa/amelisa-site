@@ -18,7 +18,7 @@ class Layout extends React.Component {
   render () {
     let { children, title, home, menuItems } = this.props
 
-    let fixedDrawer = !home
+    let fixedDrawer = !!menuItems
 
     return (
       <MdlLayout fixedHeader fixedDrawer={fixedDrawer} {...this.props}>
@@ -26,10 +26,12 @@ class Layout extends React.Component {
           <Navigation className='nav'>
             <Link to='/' key='home'>Home</Link>
             <Link to='/docs' key='docs'>Docs</Link>
+            <Link to='/faq' key='faq'>FAQ</Link>
+            <Link to='/resources' key='resources'>Resources</Link>
             <a href='https://github.com/amelisa/amelisa'>Github</a>
           </Navigation>
         </Header>
-        {!home && <Drawer title='Docs'>
+        {menuItems && <Drawer title='Docs'>
           <Navigation>
             {menuItems.map((menuItem) => {
               let { title, section } = menuItem

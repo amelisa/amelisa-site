@@ -79,7 +79,7 @@ class Docs extends React.Component {
 
     return (
       <Layout className='Docs' menuItems={menuItems}>
-        <article className='article'>
+        <article>
           <div dangerouslySetInnerHTML={{__html: html}} />
         </article>
       </Layout>
