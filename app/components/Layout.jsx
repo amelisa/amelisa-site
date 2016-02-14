@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { Layout as MdlLayout, Content, Drawer, Footer, FooterSection, Header, Navigation } from 'react-mdl'
+import { Initializer } from 'react-google-analytics'
 
 class Layout extends React.Component {
 
@@ -14,6 +15,11 @@ class Layout extends React.Component {
     home: PropTypes.bool,
     menuItems: PropTypes.array
   };
+
+  componentDidMount () {
+    window.ga('create', 'UA-73766927-1', 'auto')
+    window.ga('send', 'pageview')
+  }
 
   render () {
     let { children, title, home, menuItems } = this.props
@@ -46,6 +52,7 @@ class Layout extends React.Component {
             <FooterSection type='right' logo='Copyright © 2015' />
           </Footer>}
         </Content>
+        <Initializer id='UA-73766927-1' />
       </MdlLayout>
     )
   }
