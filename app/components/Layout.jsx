@@ -34,7 +34,7 @@ class Layout extends React.Component {
             <Link to='/docs' key='docs'>Docs</Link>
             <Link to='/faq' key='faq'>FAQ</Link>
             <Link to='/resources' key='resources'>Resources</Link>
-            <a href='https://github.com/amelisa/amelisa'>Github</a>
+            <a href='https://github.com/amelisa/amelisa'><img src='/img/github.svg' className='github' /></a>
           </Navigation>
         </Header>
         {menuItems && <Drawer title='Docs'>
@@ -42,7 +42,7 @@ class Layout extends React.Component {
             {menuItems.map((menuItem) => {
               let { title, section } = menuItem
 
-              return <Link to={`/docs/${section}`} key={section}>{title}</Link>
+              return <Link to={`/docs/${section}`} key={section} onClick={this.onClick}>{title}</Link>
             })}
           </Navigation>
         </Drawer>}
@@ -56,6 +56,11 @@ class Layout extends React.Component {
       </MdlLayout>
     )
   }
+
+  onClick = () => {
+    let drawer = document.getElementsByClassName('mdl-layout__drawer')[0]
+    drawer.className = drawer.className.replace(/(?:^|\s)is-visible(?!\S)/g, '')
+  };
 }
 
 export default Layout

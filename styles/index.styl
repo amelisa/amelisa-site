@@ -33,11 +33,16 @@ a
   color: $colors.links
 
 article
-  min-width 400px
   padding 56px 80px 80px
 
+@media (max-width: 500px)
+  .mdl-layout__header-row .mdl-navigation__link
+    padding 0 5px
+  article
+    padding 20px
+
 .mdl-layout
-  min-width 500px
+  min-width 320px
 
 .mdl-layout__drawer-button
   i
