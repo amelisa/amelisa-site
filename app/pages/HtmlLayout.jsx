@@ -17,8 +17,8 @@ class HtmlLayout extends React.Component {
     return (
       <html>
         <head>
-          <title>Amelisa. Offline and real-time for React and Mongo.</title>
-          <meta name='description' content='Amelisa, React, Mongo, Offline First, Real-time, CRDT' />
+          <title>Amelisa. Offline and real-time engine for React and Mongo</title>
+          <meta name='description' content='Amelisa is CRDT based Offline-First and Real-Time synchronization data engine with React and Mongo support' />
           <meta name='viewport' content='width=device-width, initial-scale=1.0' />
           <link rel='stylesheet' href='/extra/material.min.css' />
           <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
