@@ -2,13 +2,13 @@
 
 Each React component can subscribe to data independently. Amelisa will handle situations if two components are subscribed to the same data, it will make only one request to server, or if data is already available on client, it will just provide it immediately.
 
-```js
-import { createContainer } from 'amelisa/react'
-```
-
 To subscribe for data, component should:
 - implement `getQueries` method that returns object, where keys are names of subscribables and values are arrays of params (similar to `model.doc` and `model.query` methods). Resulting data will be available in corresponding `props` fields.
 - be wrapped with `createContainer` method.
+
+```js
+import { createContainer } from 'amelisa/react'
+```
 
 > Container = createContainer(Component)
 > * `Component` Component that implements `getQueries` method
