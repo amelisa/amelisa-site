@@ -2,11 +2,15 @@
 
 Each React component can subscribe to data independently. Amelisa will handle situations if two components are subscribed to the same data, it will make only one request to server, or if data is already available on client, it will just provide it immediately.
 
+```js
+import { createContainer } from 'amelisa/react'
+```
+
 To subscribe for data, component should:
 - implement `getQueries` method that returns object, where keys are names of subscribables and values are arrays of params (similar to `model.doc` and `model.query` methods). Resulting data will be available in corresponding `props` fields.
-- be wrapped with `amelisa.createContainer` method.
+- be wrapped with `createContainer` method.
 
-> Container = amelisa.createContainer(Component)
+> Container = createContainer(Component)
 > * `Component` Component that implements `getQueries` method
 > * `Container` Returns HOC, that subscribes for data and renders Component as data is available
 
@@ -48,20 +52,24 @@ class Component extends React.Component {
   }
 }
 
-export default amelisa.createContainer(Component)
+export default createContainer(Component)
 ```
 
 ## Server rendering
 
 Server rendering in situation when every component subscribes to data independently could be not trivial, because in the components tree to be able to know what data is needed for lower components, Amelisa should render upper components first. Right now server rendering works in simple scenarios (it does not work if container components are passed as children).
 
-> html = await amelisa.renderToString(element, props, children)
+```js
+import { renderToString, renderToStaticMarkup } from 'amelisa/server'
+```
+
+> html = await renderToString(element, props, children)
 > * `element` React element to render
 > * `props` Props
 > * `children` Children
 > * `html` Return html string
 
-> html = await amelisa.renderToStaticMarkup(element, props, children)
+> html = await renderToStaticMarkup(element, props, children)
 > * `element` React element to render
 > * `props` Props
 > * `children` Children

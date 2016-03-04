@@ -10,7 +10,7 @@ If you want to scale beyond one process, you need pub/sub system for inter-proce
 
 
 ```js
-import { MongoStorage, RedisChannel, Store } from 'amelisa'
+import { MongoStorage, RedisChannel, Store } from 'amelisa/server'
 
 const storage = new MongoStorage(process.env.MONGO_URL)
 const pub = new RedisChannel(process.env.REDIS_URL)
@@ -29,7 +29,7 @@ Find more about [store options](/docs/storeoptions)
 For tests in-memory storage can be used.
 
 ```js
-import { MemoryStorage, Store } from 'amelisa'
+import { MemoryStorage, Store } from 'amelisa/server'
 
 const storage = new MemoryStorage()
 

@@ -22,6 +22,6 @@ immediately even if a user has a high latency connection or is currently offline
 > * `doc` A document to add. If the document has an `_id` property, it will be set at that value underneath the path. Otherwise, an `_id` from model.id() will be set on the object first
 
 > `await model.del(path)`
-> * `path` Path to delete or `[collectionName, docId, field]` array
+> * `path` Path to delete or `collectionName, docId, field` params or `[collectionName, docId, field]` array
 
 Use Getters/Setters to manipulate [Doc](/docs/doc).
