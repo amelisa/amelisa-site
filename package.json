@@ -6,11 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "standard | snazzy",
-    "start": "concurrent 'npm run dev-styles' 'npm run dev-server'",
+    "start": "npm run build-server && concurrent 'npm run dev-styles' 'npm run dev-server'",
     "dev-server": "nodemon server.js",
     "dev-styles": "gulp",
     "prod-server": "NODE_ENV=production node server.js",
-    "build": "gulp build && webpack --progress --config webpack.prod.babel.js",
+    "build-styles": "gulp build",
+    "build-client": "webpack --progress --config webpack.prod.babel.js",
+    "build-server": "webpack --progress --config webpack.server.babel.js",
+    "build": "npm run build-styles && npm run build-client && npm run build-server",
     "analyze": "webpack --progress --config webpack.prod.babel.js --json | analyze-bundle-size"
   },
   "author": "",
