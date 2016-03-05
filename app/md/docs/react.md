@@ -1,10 +1,28 @@
 # React
 
-Each React component can subscribe to data independently. Amelisa will handle situations if two components are subscribed to the same data, it will make only one request to server, or if data is already available on client, it will just provide it immediately.
+React components declaratively subscribes for Mongo queries. Container, which wraps component (HOC) handles subscriptions and renders component with data provided in props. For data mutations, Amelisa's isomorphic api (Model) is utilized.
 
-To subscribe for data, component should:
-- implement `getQueries` method that returns object, where keys are names of subscribables and values are arrays of params (similar to `model.doc` and `model.query` methods). Resulting data will be available in corresponding `props` fields.
-- be wrapped with `createContainer` method.
+First, you need to create model on client side:
+
+```js
+import { getModel } from 'amelisa/react'
+
+let model = getModel()
+```
+
+Model has `ready` event, which is triggered after handshake with server (while online) or after local storage initialization (while offline). It shows that model api is ready to be used.
+It's convenient to have model in React context, to be able to reach it in every component. There is `RootComponent` that can be used as your app root component. It waits model in props and put it into context.
+
+```js
+import { RootComponent } from 'amelisa/react'
+
+model.on('ready', () => {
+  render(<RootComponent model={model} />)
+})
+```
+
+Components declare subscriptions by implementing `getQueries` method. It should return object, where keys are names of subscribables and values are arrays of params (similar to `model.doc` and `model.query` methods). Resulting data will be available in corresponding `props` fields.
+Components are wrapped with HOC by `createContainer` method.
 
 ```js
 import { createContainer } from 'amelisa/react'
@@ -13,8 +31,6 @@ import { createContainer } from 'amelisa/react'
 > Container = createContainer(Component)
 > * `Component` Component that implements `getQueries` method
 > * `Container` Returns HOC, that subscribes for data and renders Component as data is available
-
-Model is available in component's context.
 
 ```js
 class Component extends React.Component {

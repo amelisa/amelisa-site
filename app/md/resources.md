@@ -3,7 +3,8 @@
 ### Social
 
 [Gihub](https://github.com/amelisa/amelisa)
-[Twitter](https://twitter.com/amelisajs) 
+[Twitter](https://twitter.com/amelisajs)
+[Gitter](https://gitter.im/amelisa/amelisa)
 
 ### Modules
 
