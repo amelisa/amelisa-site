@@ -13,6 +13,8 @@ All model mutators modify data and emit events synchronously. This is only safe 
 As well as a synchronous interface, model mutators return promise, which is resolved when the operation is confirmed from the server, which may be desired to confirm that data was saved before updating the UI in some rare cases. This promise should be used very rarely in practice, and data updates should be treated as synchronous, so that the UI responds
 immediately even if a user has a high latency connection or is currently offline.
 
+### General
+
 > `await model.set(path, value)`
 > * `path` Model path to set or `[collectionName, docId, field]` array
 > * `value` Value to assign
@@ -23,5 +25,60 @@ immediately even if a user has a high latency connection or is currently offline
 
 > `await model.del(path)`
 > * `path` Path to delete or `collectionName, docId, field` params or `[collectionName, docId, field]` array
+
+### Array
+
+> `await model.push(path, value)`
+> * `path` Model path or `[collectionName, docId, field]` array
+> * `value` Value to push
+
+> `await model.unshift(path, value)`
+> * `path` Model path or `[collectionName, docId, field]` array
+> * `value` Value to unshift
+
+> `await model.pop(path)`
+> * `path` Model path or `[collectionName, docId, field]` array
+
+> `await model.shift(path)`
+> * `path` Model path or `[collectionName, docId, field]` array
+
+> `await model.insert(path, index, values)`
+> * `path` Model path or `[collectionName, docId, field]` array
+> * `index` Position
+> * `values` Values to insert
+
+> `await model.remove(path, index, howMany)`
+> * `path` Model path or `[collectionName, docId, field]` array
+> * `index` Position
+> * `howMany` *(optional)* Items count to remove. Defaults to 1
+
+> `await model.move(path, from, to, howMany)`
+> * `path` Model path or `[collectionName, docId, field]` array
+> * `from` Position
+> * `to` Destination
+> * `howMany` *(optional)* Items count to move. Defaults to 1
+
+### Boolean
+
+> `await model.invert(path)`
+> * `path` Model path or `[collectionName, docId, field]` array
+
+### Number
+
+> `await model.increment(path, byNumber)`
+> * `path` Model path or `[collectionName, docId, field]` array
+> * `byNumber` *(optional)* Number specifying amount to increment or decrement if negative. Defaults to 1
+
+### String
+
+> `await model.stringInsert(path, index, text)`
+> * `path` Model path or `[collectionName, docId, field]` array
+> * `index` Position
+> * `text` String to insert
+
+> `await model.stringRemove(path, index, howMany)`
+> * `path` Model path or `[collectionName, docId, field]` array
+> * `index` Position
+> * `howMany` *(optional)* Number of characters to remove. Defaults to 1
 
 Use Getters/Setters to manipulate [Doc](/docs/doc).

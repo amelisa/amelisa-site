@@ -22,7 +22,6 @@ app.use(express.static(process.cwd() + '/public'))
 
 app.use((req, res, next) => {
   match({routes, location: req.url}, (err, redirectLocation, renderProps) => {
-    console.log('match', err, redirectLocation, renderProps)
     if (err) {
       console.error('router error', err)
       return res.status(500).end('Internal error')

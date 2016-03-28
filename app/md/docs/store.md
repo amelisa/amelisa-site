@@ -11,16 +11,20 @@ To be able to scale beyond one process, there is pub/sub system, based on Redis:
 - `MemoryPubsub` - in-memory pubsub. Mostly useful for writing tests
 
 ```js
-import { MongoStorage, RedisPubsub, Store } from 'amelisa/server'
+import { MongoStorage } from 'amelisa/mongo-server'
+import { RedisPubsub } from 'amelisa/redis'
+import { Store } from 'amelisa/server'
 
 const storage = new MongoStorage(process.env.MONGO_URL)
 const pubsub = new RedisPubsub(process.env.REDIS_URL)
-const options = {}
+const options = {
+  storage,
+  pubsub
+}
 
-await storage.init()
-await pubsub.init()
+let store = new Store(options)
 
-let store = new Store(storage, pubsub, options)
+await store.init()
 ```
 
 Find more about [store options](/docs/storeoptions)
@@ -28,13 +32,17 @@ Find more about [store options](/docs/storeoptions)
 For tests in-memory storage can be used.
 
 ```js
-import { MemoryStorage, Store } from 'amelisa/server'
+import { MemoryStorage } from 'amelisa/mongo-server'
+import { Store } from 'amelisa/server'
 
 const storage = new MemoryStorage()
+const options = {
+  storage
+}
 
-await storage.init()
+let store = new Store(options)
 
-let store = new Store(storage)
+await store.init()
 ```
 
 Store creates [Model](/docs/model).
