@@ -35,7 +35,7 @@
     "react-addons-update": "^0.14.1",
     "react-dom": "^0.14.1",
     "react-google-analytics": "^0.2.0",
-    "react-mdl": "^1.0.4",
+    "react-mdl": "1.0.4",
     "react-router": "^1.0.0",
     "react-tap-event-plugin": "^0.2.1"
   },
