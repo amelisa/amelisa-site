@@ -26,7 +26,7 @@ model.on('ready', () => {
 })
 ```
 
-Components declare subscriptions by implementing `getQueries` method. It should return object, where keys are names of subscribables and values are arrays of params (similar to `model.doc` and `model.query` methods). Resulting data will be available in corresponding `props` fields.
+Components declare subscriptions by implementing `subscribe` method. It should return object, where keys are names of subscribables and values are arrays of params (similar to `model.doc` and `model.query` methods). Resulting data will be available in corresponding `props` fields.
 Components are wrapped with HOC by `createContainer` method.
 
 ```js
@@ -34,7 +34,7 @@ import { createContainer } from 'amelisa/react'
 ```
 
 > Container = createContainer(Component)
-> * `Component` Component that implements `getQueries` method
+> * `Component` Component that implements `subscribe` method
 > * `Container` Returns HOC, that subscribes for data and renders Component as data is available
 
 ```js
@@ -44,7 +44,7 @@ class Component extends React.Component {
     model: React.PropTypes.object
   };
 
-  getQueries () {
+  subscribe () {
     let userId = this.context.model.get('_session.userId')
     let age = this.props.age
 
