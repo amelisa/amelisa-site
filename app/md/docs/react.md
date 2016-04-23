@@ -6,7 +6,7 @@ First, you need to create model on client side:
 
 ```js
 import { dbQueries } from 'amelisa/mongo'
-import { getModel } from 'amelisa/react'
+import { getModel } from 'amelisa'
 
 let options = {
   dbQueries // makes possible to use db queries during offline

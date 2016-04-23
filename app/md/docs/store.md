@@ -13,7 +13,7 @@ To be able to scale beyond one process, there is pub/sub system, based on Redis:
 ```js
 import { MongoStorage } from 'amelisa/mongo-server'
 import { RedisPubsub } from 'amelisa/redis'
-import { Store } from 'amelisa/server'
+import { Store } from 'amelisa'
 
 const storage = new MongoStorage(process.env.MONGO_URL)
 const pubsub = new RedisPubsub(process.env.REDIS_URL)
@@ -33,7 +33,7 @@ For tests in-memory storage can be used.
 
 ```js
 import { MemoryStorage } from 'amelisa/mongo-server'
-import { Store } from 'amelisa/server'
+import { Store } from 'amelisa'
 
 const storage = new MemoryStorage()
 const options = {
