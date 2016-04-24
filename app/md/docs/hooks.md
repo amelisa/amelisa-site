@@ -15,3 +15,10 @@ There are two store hooks, that if specified are called during ops are processed
 > * `op` Current operation. Ops can be distinguished by their `type`, `collectionName`, `docId`, `field`, `value` and other properties
 > * `session` If session middleware is used, it contains session values
 > * `params` Contains `server` field, which specify if op origin is server-created model
+
+There is client connection hook. It can be used to know if client is online
+
+> store.clientHook = async (channel, session, params) => {}
+> * `channel` Event-emitter with `close` event on client disconnect
+> * `session` If session middleware is used, it contains session values
+> * `params` Contains `server` field, which specify if op origin is server-created model

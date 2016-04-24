@@ -6,7 +6,6 @@
 - `pubsub` *(optional)* Pub/sub adapter
 - `collections` Collections that are sent to the client should be specified here. `model.prepareBundle()` can be used to sanitize model data from server-only collections. This is useful for model's data serialization before sending it to client. This option also used for creating object stores for IndexedDB
 - `projections` Projection - is virtual collection that contains documents with only specified fields. This is useful if you do not want send to client whole document. Projections can be inclusive and exclusive.
-- `clientStorage` Enable/disable using client storage (IndexedDB for web). If disabled, data on client will be stored in-memory and lost on browser closing.
 
 ```js
 const options = {
@@ -34,8 +33,7 @@ const options = {
         name: true
       }
     }
-  },
-  clientStorage: true
+  }
 }
 
 let store = new Store(options)
