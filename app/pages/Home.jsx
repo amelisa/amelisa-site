@@ -13,14 +13,14 @@ class Home extends React.Component {
           </div>
           <label>Amelisa</label>
           <div className='moto'>Data engine with offline and realtime</div>
-          <div>React/Mongo/NodeJS integration</div>
+          <div>React/React Native/Mongo/NodeJS integration</div>
         </section>
         <section className='features'>
           <div dangerouslySetInnerHTML={{__html: html}}></div>
         </section>
         <section className='warning'>
           <div>
-            Alpha version. Not ready for production
+            Alpha version software
           </div>
         </section>
       </Layout>

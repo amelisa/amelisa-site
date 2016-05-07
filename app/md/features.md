@@ -1,21 +1,31 @@
 ### Offline
-- Distributed system based on CRDT similar to [SwarmJS](http://swarmjs.github.io/)
-- Offline storage based on [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
+- Full offline support
+- CRDT JSON type with operations for objects, arrays, strings, numbers and booleans
+- Merging of complex data structures, like array of array of objects
+- Collaborative text editing
+- Data sync between devices
+- Realtime
 
-### Mongo integration
-- Subscribe to Mongo queries like in [Meteor](https://www.meteor.com/)
-- Offline Mongo queries by using [Mingo](https://github.com/kofrasa/mingo)
+### Queries
+- Online and offline Mongo query subscriptions
+- GraphQL subscriptions and offline (POC)
 
-### React integration
-- Each component independently subscribes to data with help of HOC-container similar to [Relay](https://facebook.github.io/relay/)
-- Server rendering of self-subscribed components like in [Transmit](https://github.com/RickWong/react-transmit)
+### React and React Native
+- HOC wrapper for React components
+- Server rendering (POC, limited support)
+- AsyncStorage and SqliteStorage for React Native apps
 
 ### Api
-- Isomorphic getter-setter event-emmiter similar to [Racer](https://github.com/derbyjs/racer)
-- Paths concept similar to [Falcor](http://netflix.github.io/falcor/)
+- Isomorphic getter-setter event-emitter
+- Single source of truth
+- Same api for local and remote data
+- Modular structure
 
 ### Access Control
-- Virtual collections (projections) and access control hooks like in [ShareJS](https://github.com/share/ShareJS)
+- Server-side hooks for access control and validation
+- Field-based access control with projections
 
 ### Scalability
-- Scales horizontally with help of [Redis](http://redis.io/) pub-sub
+- Scales horizontally with Redis pub/sub
+- Mongo storage
+- Rethinkdb storage (POC)

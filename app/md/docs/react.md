@@ -5,7 +5,7 @@ React components declaratively subscribes for Mongo queries. Container, which wr
 First, you need to create model on client side:
 
 ```js
-import { dbQueries } from 'amelisa/mongo'
+import { dbQueries } from 'amelisa-mongo'
 import { getModel } from 'amelisa'
 
 let options = {
@@ -19,7 +19,7 @@ Model has `ready` event, which is triggered after handshake with server (while o
 It's convenient to have model in React context, to be able to reach it in every component. There is `RootComponent` that can be used as your app root component. It waits model in props and put it into context.
 
 ```js
-import { RootComponent } from 'amelisa/react'
+import { RootComponent } from 'react-amelisa'
 
 model.on('ready', () => {
   render(<RootComponent model={model} />)
@@ -30,7 +30,7 @@ Components declare subscriptions by implementing `subscribe` method. It should r
 Components are wrapped with HOC by `createContainer` method.
 
 ```js
-import { createContainer } from 'amelisa/react'
+import { createContainer } from 'react-amelisa'
 ```
 
 > Container = createContainer(Component)
@@ -81,7 +81,7 @@ export default createContainer(Component)
 Server rendering in situation when every component subscribes to data independently could be not trivial, because in the components tree to be able to know what data is needed for lower components, Amelisa should render upper components first. Right now server rendering works in simple scenarios (it does not work if container components are passed as children).
 
 ```js
-import { renderToString, renderToStaticMarkup } from 'amelisa/react-server'
+import { renderToString, renderToStaticMarkup } from 'react-amelisa/server'
 ```
 
 > html = await renderToString(element, props, children)
